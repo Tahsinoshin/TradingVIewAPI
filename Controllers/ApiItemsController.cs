@@ -38,11 +38,7 @@ namespace WebApi.Controllers
                 return NotFound();
             }
 
-            //text file append
-
-            StreamWriter sw = new StreamWriter("Response.txt", true);
-            sw.WriteLine(apiItem);
-            sw.Dispose();
+           
 
             return apiItem;
         }
@@ -86,7 +82,15 @@ namespace WebApi.Controllers
             _context.ApiItems.Add(apiItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetApiItem), new { id = apiItem.Id }, apiItem); 
+            //text file append
+
+            StreamWriter sw = new StreamWriter("Response.txt", true);
+            await sw.WriteLineAsync(apiItem.time.ToString() +"," + apiItem.message.ToString());
+            sw.Dispose();
+
+            return CreatedAtAction(nameof(GetApiItem), new { id = apiItem.Id }, apiItem);
+
+            
         }
 
         // DELETE: api/ApiItems/5
