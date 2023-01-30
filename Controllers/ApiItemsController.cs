@@ -21,7 +21,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/ApiItems
-        [HttpGet]
+        [HttpGet("alert")]
         public async Task<ActionResult<IEnumerable<ApiItem>>> GetApiItems()
         {
             return await _context.ApiItems.ToListAsync();
@@ -76,21 +76,23 @@ namespace WebApi.Controllers
 
         // POST: api/ApiItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<ApiItem>> PostApiItem(ApiItem apiItem)
+        [HttpPost("/receivenotification", Name = "ReceiveNotification")]
+        public async void ReceiveNotification(ApiItem apiItem)
         {
-            _context.ApiItems.Add(apiItem);
-            await _context.SaveChangesAsync();
-
-            //text file append
-
-            StreamWriter sw = new StreamWriter("Response.txt", true);
-            await sw.WriteLineAsync(apiItem.time.ToString() +"," + apiItem.message.ToString());
+            StreamWriter sw;
+            String message = apiItem.message.ToString();
+       
+            try
+            {
+                sw = new StreamWriter("Messages/DetailedMessage.txt", true);
+                await sw.WriteLineAsync(apiItem.time.ToString() + "," + apiItem.message.ToString());
+            }
+            catch (Exception ex)
+            {
+                sw = new StreamWriter("Messages/ErrorMessage.txt", true);
+                await sw.WriteLineAsync(ex.Message.ToString());
+            }
             sw.Dispose();
-
-            return CreatedAtAction(nameof(GetApiItem), new { id = apiItem.Id }, apiItem);
-
-            
         }
 
         // DELETE: api/ApiItems/5
