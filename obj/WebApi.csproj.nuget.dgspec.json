@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Desktop\\WebAPI\\WebApi.csproj": {}
+    "E:\\TFS Codebase\\Bitbucket\\OthersPrivateRepo\\TradingVIewAPI\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Desktop\\WebAPI\\WebApi.csproj": {
+    "E:\\TFS Codebase\\Bitbucket\\OthersPrivateRepo\\TradingVIewAPI\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\WebAPI\\WebApi.csproj",
+        "projectUniqueName": "E:\\TFS Codebase\\Bitbucket\\OthersPrivateRepo\\TradingVIewAPI\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Dell\\Desktop\\WebAPI\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Desktop\\WebAPI\\obj\\",
+        "projectPath": "E:\\TFS Codebase\\Bitbucket\\OthersPrivateRepo\\TradingVIewAPI\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\mdmah\\.nuget\\packages\\",
+        "outputPath": "E:\\TFS Codebase\\Bitbucket\\OthersPrivateRepo\\TradingVIewAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mdmah\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,7 +69,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -81,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

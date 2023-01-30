@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Models;
@@ -79,20 +75,27 @@ namespace WebApi.Controllers
         [HttpPost("/receivenotification", Name = "ReceiveNotification")]
         public async void ReceiveNotification([FromBody]ApiItem apiItem)
         {
-            StreamWriter sw;
-            String message = apiItem.message.ToString();
-       
+            StreamWriter sw = null!;
+
             try
             {
                 sw = new StreamWriter("Messages/DetailedMessage.txt", true);
-                await sw.WriteLineAsync(apiItem.time.ToString() + "," + apiItem.message.ToString());
+                await sw.WriteLineAsync(apiItem.time.ToString(CultureInfo.InvariantCulture) + "," + apiItem.message);
+            }
+            catch(IOException ex)
+            {
+                sw = new StreamWriter("Messages/ErrorMessage.txt", true);
+                await sw.WriteLineAsync(ex.Message);
             }
             catch (Exception ex)
             {
                 sw = new StreamWriter("Messages/ErrorMessage.txt", true);
-                await sw.WriteLineAsync(ex.Message.ToString());
+                await sw.WriteLineAsync(ex.Message);
             }
-            sw.Dispose();
+            finally
+            {
+                await sw.DisposeAsync();
+            }
         }
 
         // DELETE: api/ApiItems/5
