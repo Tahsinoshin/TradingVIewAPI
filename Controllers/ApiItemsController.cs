@@ -77,7 +77,7 @@ namespace WebApi.Controllers
         // POST: api/ApiItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("/receivenotification", Name = "ReceiveNotification")]
-        public async void ReceiveNotification(ApiItem apiItem)
+        public async void ReceiveNotification([FromBody]ApiItem apiItem)
         {
             StreamWriter sw;
             String message = apiItem.message.ToString();
